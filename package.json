@@ -1,0 +1,12 @@
+{
+  "name": "chemistry-simulator",
+  "version": "0.2.0",
+  "description": "Interactive periodic table with hi-res 3D atoms and a real-time chemistry mixing lab.",
+  "homepage": "https://42-apps.github.io/chemistry-simulator/",
+  "repository": "github:martingluckman/chemistry-simulator",
+  "license": "MIT",
+  "scripts": {
+    "build-data": "node tools/build-data.js",
+    "serve": "node tools/serve.mjs"
+  }
+}
