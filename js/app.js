@@ -9,6 +9,29 @@
   var BY = {}; E.forEach(function (e) { BY[e.symbol] = e; });
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+<<<<<<< HEAD
+=======
+  var language = localStorage.getItem('chemlab.language') === 'ar' ? 'ar' : 'en';
+  var AR_NAMES = window.AR_ELEMENT_NAMES || {};
+  var WORDS = {
+    'Chemistry Lab':'مختبر الكيمياء','Interactive periodic table & real-time reaction simulator':'جدول دوري تفاعلي ومحاكاة فورية للتفاعلات',
+    'Search element, symbol or number…':'ابحث عن عنصر أو رمز أو رقم…','Colour':'التلوين','Category':'الفئة','State at temperature':'الحالة عند درجة الحرارة','Electronegativity':'السالبية الكهربائية','Atomic mass':'الكتلة الذرية',
+    'Electron tool':'أداة التوزيع الإلكتروني','Acids':'الأحماض','How to use':'طريقة الاستخدام','Reaction Lab':'مختبر التفاعلات','Clear':'إفراغ','Empty the cauldron':'إفراغ وعاء التفاعل',
+    'Shift-click elements to select,':'اضغط مع Shift لاختيار العناصر،','then drag them in — or hit Mix.':'ثم اسحبها إلى الوعاء أو اضغط «امزج».','🌡️ Temperature':'🌡️ درجة الحرارة','❄️ 0 K':'❄️ 0 كلفن','🧊 Dry ice':'🧊 الثلج الجاف','🏠 Room':'🏠 الغرفة','♨️ Boiling':'♨️ الغليان','🔥 Furnace':'🔥 الفرن','☀️ Sun':'☀️ الشمس',
+    '🌬️ Air (O₂)':'🌬️ هواء (O₂)','💧 Water':'💧 ماء','⚡ Spark':'⚡ شرارة','Mix it! ⚗️':'امزج ⚗️','🏆 Discoveries ':'🏆 المركبات المكتشفة ',
+    'Labels':'التسميات','Spin':'دوران','Cloud view':'عرض السحابة','drag to rotate · scroll to zoom':'اسحب للتدوير · مرر للتكبير','⚗️ How to use the Chemistry Lab':'⚗️ طريقة استخدام مختبر الكيمياء',
+    'Electron configuration calculator':'حاسبة التوزيع الإلكتروني','Choose up to two elements. The calculator fills orbitals in Aufbau order and shows each atom separately.':'اختر عنصرًا أو عنصرين. تحسب الأداة التوزيع الإلكتروني حسب ترتيب ملء المدارات، وتعرض توزيع كل ذرة على حدة.',
+    'Atom A':'الذرة الأولى','Atom B (optional)':'الذرة الثانية (اختياري)','Common acids':'الأحماض الشائعة','A reference table of common acids and their formulas.':'جدول مرجعي لأسماء الأحماض الشائعة وصيغها الكيميائية.',
+    'Name':'الاسم','Formula':'الصيغة','Type':'النوع','Electron configuration':'التوزيع الإلكتروني','Electron shells':'الأغلفة الإلكترونية','Properties':'الخواص','What it looks like':'المظهر',
+    'Atomic mass':'الكتلة الذرية','Period / Group':'الدورة / المجموعة','Block':'الفئة المدارية','State now':'الحالة الآن','Phase at STP':'الحالة القياسية','Melting point':'درجة الانصهار','Boiling point':'درجة الغليان','Density':'الكثافة',
+    'Electron affinity':'الألفة الإلكترونية','1st ionisation':'طاقة التأين الأولى','Reactivity':'النشاط الكيميائي','Discovered by':'المكتشف','＋ Add to Lab':'＋ أضف إلى المختبر','✦ Select':'✦ اختر','✓ Selected':'✓ تم الاختيار',
+    'Hover an element to see its details · click for the 3D atom':'مرر فوق العنصر لعرض تفاصيله · اضغط لعرض الذرة ثلاثية الأبعاد','Click to explore the atom in 3D →':'اضغط لاستكشاف الذرة ثلاثية الأبعاد ←',
+    'Solid':'صلب','Liquid':'سائل','Gas':'غاز','Alkali metal':'فلز قلوي','Alkaline earth':'فلز قلوي ترابي','Transition metal':'فلز انتقالي','Post-transition':'فلز بعد انتقالي','Metalloid':'شبه فلز','Diatomic nonmetal':'لافلز ثنائي الذرة','Polyatomic nonmetal':'لافلز متعدد الذرات','Noble gas':'غاز نبيل','Lanthanide':'لانثانيد','Actinide':'أكتينيد','Unknown':'غير معروف',
+    'Config':'التوزيع الإلكتروني','Explosive':'انفجاري','Exothermic':'طارد للحرارة','Effervescent':'متصاعد للفقاعات','Smoke':'دخان','No reaction':'لا يوجد تفاعل','Alloy':'سبيكة','Drama':'شدة التفاعل','Inert':'خامل','Gentle':'هادئ','Lively':'نشط','Vigorous':'قوي','Violent':'عنيف'
+  };
+  function tr(s) { return language === 'ar' ? (WORDS[s] || s) : s; }
+  function elementName(e) { return language === 'ar' ? (AR_NAMES[e.symbol] || e.name) : e.name; }
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 
   var CAT = {
     'alkali metal': '#f87171', 'alkaline earth metal': '#fb923c', 'transition metal': '#fbbf24',
@@ -36,7 +59,11 @@
   var ptable = $('#ptable');
   var focusCard = document.createElement('div');
   focusCard.id = 'focus-card'; focusCard.className = 'empty';
+<<<<<<< HEAD
   focusCard.innerHTML = '<div class="fc-body"><div>Hover an element to see its details · click for the 3D atom</div></div>';
+=======
+  focusCard.innerHTML = '<div class="fc-body"><div>' + tr('Hover an element to see its details · click for the 3D atom') + '</div></div>';
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
   ptable.appendChild(focusCard);
 
   // lanthanide / actinide pointer cells
@@ -49,7 +76,11 @@
     c.style.gridColumn = e.xpos; c.style.gridRow = e.ypos;
     c.innerHTML = '<span class="num">' + e.number + '</span>' +
       '<span class="sym">' + e.symbol + '</span>' +
+<<<<<<< HEAD
       '<span class="nm">' + e.name + '</span>' +
+=======
+      '<span class="nm">' + elementName(e) + '</span>' +
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
       '<span class="ms">' + (e.mass != null ? round(e.mass, 2) : '') + '</span>';
     c.addEventListener('mouseenter', function () { showFocus(e); });
     c.addEventListener('click', function (ev) {
@@ -82,6 +113,7 @@
         '<span class="fc-mass">' + (e.mass != null ? round(e.mass, 3) : '—') + ' u</span>' +
       '</div>' +
       '<div class="fc-body">' +
+<<<<<<< HEAD
         '<div class="fc-name">' + e.name + '</div>' +
         '<div class="fc-cat">' + (CAT_LABEL[e.category] || e.category) + ' · Period ' + e.period + ' · Group ' + (e.group || '—') + '</div>' +
         '<div class="fc-grid">' +
@@ -95,6 +127,21 @@
           prop('Block', (e.block || '—') + '-block') +
         '</div>' +
         '<div class="fc-hint">Click to explore the atom in 3D →</div>' +
+=======
+        '<div class="fc-name">' + elementName(e) + '</div>' +
+        '<div class="fc-cat">' + tr(CAT_LABEL[e.category] || e.category) + ' · ' + (language === 'ar' ? 'الدورة ' : 'Period ') + e.period + ' · ' + (language === 'ar' ? 'المجموعة ' : 'Group ') + (e.group || '—') + '</div>' +
+        '<div class="fc-grid">' +
+          prop(tr('Config'), e.configSemantic || e.config || '—') +
+          prop(language === 'ar' ? 'الحالة الآن' : 'State (now)', tr(Chem.stateAt(e.symbol, temp))) +
+          prop(language === 'ar' ? 'ينصهر عند' : 'Melts', kc(e.melt)) +
+          prop(language === 'ar' ? 'يغلي عند' : 'Boils', kc(e.boil)) +
+          prop(tr('Electronegativity'), e.electronegativity != null ? e.electronegativity : '—') +
+          prop(tr('Density'), e.density != null ? e.density + ' g/cm³' : '—') +
+          prop(language === 'ar' ? 'اكتُشف بواسطة' : 'Discovered', (e.discoveredBy || '—')) +
+          prop(tr('Block'), (e.block || '—') + '-block') +
+        '</div>' +
+        '<div class="fc-hint">' + tr('Click to explore the atom in 3D →') + '</div>' +
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
       '</div>';
   }
   function prop(k, v) { return '<div>' + k + ': <b>' + v + '</b></div>'; }
@@ -136,6 +183,7 @@
     var leg = $('#legend');
     if (colorMode === 'category') {
       leg.innerHTML = Object.keys(CAT).map(function (k) {
+<<<<<<< HEAD
         return '<span class="legend-item"><span class="legend-swatch" style="background:' + CAT[k] + '"></span>' + (CAT_LABEL[k] || k) + '</span>';
       }).join('');
     } else if (colorMode === 'state') {
@@ -145,6 +193,17 @@
       leg.innerHTML = swatch('#3b82f6', 'Low (gives electrons)') + swatch('#a855f7', '·') + swatch('#ef4444', 'High (grabs electrons)');
     } else {
       leg.innerHTML = swatch('#22d3ee', 'Light') + swatch('#db2777', 'Heavy');
+=======
+        return '<span class="legend-item"><span class="legend-swatch" style="background:' + CAT[k] + '"></span>' + tr(CAT_LABEL[k] || k) + '</span>';
+      }).join('');
+    } else if (colorMode === 'state') {
+      leg.innerHTML = swatch('#7c8aa5', tr('Solid')) + swatch('#38bdf8', tr('Liquid')) + swatch('#fb7185', tr('Gas')) +
+        '<span class="legend-item">' + (language === 'ar' ? 'عند ' : 'at ') + Chem.fmtT(temp) + (language === 'ar' ? ' — غيّر الحرارة لمشاهدة الانصهار والغليان' : ' — slide the temperature to watch elements melt &amp; boil') + '</span>';
+    } else if (colorMode === 'electronegativity') {
+      leg.innerHTML = swatch('#3b82f6', language === 'ar' ? 'منخفض (يمنح إلكترونات)' : 'Low (gives electrons)') + swatch('#a855f7', '·') + swatch('#ef4444', language === 'ar' ? 'مرتفع (يجذب إلكترونات)' : 'High (grabs electrons)');
+    } else {
+      leg.innerHTML = swatch('#22d3ee', language === 'ar' ? 'خفيف' : 'Light') + swatch('#db2777', language === 'ar' ? 'ثقيل' : 'Heavy');
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
     }
   }
   function swatch(c, t) { return '<span class="legend-item"><span class="legend-swatch" style="background:' + c + '"></span>' + t + '</span>'; }
@@ -165,6 +224,7 @@
   }
   function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
 
+<<<<<<< HEAD
   function renderDataPane(e) {
     var col = CAT[e.category] || CAT.unknown;
     var img = e.image && e.image.url
@@ -202,6 +262,151 @@
       '</div>';
     $('#dp-add-lab').addEventListener('click', function () { addToCauldron(e.symbol); flashBtn(this, 'Added ✓'); });
     $('#dp-select').addEventListener('click', function () { toggleSelect(e.symbol); this.textContent = selection.has(e.symbol) ? '✓ Selected' : '✦ Select'; });
+=======
+  // Orbital configuration tool: calculate from atomic number using the Aufbau order.
+  var orbitalModal = $('#orbitals-modal'), acidsModal = $('#acids-modal');
+  var orbitalSelectA = $('#orbital-a'), orbitalSelectB = $('#orbital-b');
+  var orbitalOrder = ['1s','2s','2p','3s','3p','4s','3d','4p','5s','4d','5p','6s','4f','5d','6p','7s','5f','6d','7p'];
+  var orbitalCaps = {s:2,p:6,d:10,f:14};
+  var configExceptions = {24:'[Ar] 3d5 4s1',29:'[Ar] 3d10 4s1',41:'[Kr] 4d4 5s1',42:'[Kr] 4d5 5s1',44:'[Kr] 4d7 5s1',45:'[Kr] 4d8 5s1',46:'[Kr] 4d10',47:'[Kr] 4d10 5s1',78:'[Xe] 4f14 5d9 6s1',79:'[Xe] 4f14 5d10 6s1'};
+  function calculateConfig(z) {
+    var remaining = z, parts = [];
+    orbitalOrder.forEach(function (orbital) { if (remaining <= 0) return; var cap = orbitalCaps[orbital.charAt(1)], count = Math.min(cap, remaining); if (count) { parts.push(orbital + count); remaining -= count; } });
+    var plain = parts.join(' ');
+    var reference = E.find(function (e) { return e.number === z; });
+    // Preserve measured ground-state exceptions (for example Cr and Cu) from the project's element dataset.
+    if (reference && reference.config && reference.config !== plain) return reference.config;
+    return configExceptions[z] || plain;
+  }
+  function fillOrbitalSelects() {
+    var oldA = orbitalSelectA.value || 'H', oldB = orbitalSelectB.value || '';
+    var options = E.map(function (e) { return '<option value="' + e.symbol + '">' + e.number + ' · ' + e.symbol + ' · ' + elementName(e) + '</option>'; }).join('');
+    orbitalSelectA.innerHTML = options;
+    orbitalSelectB.innerHTML = '<option value="">—</option>' + options;
+    orbitalSelectA.value = BY[oldA] ? oldA : 'H'; orbitalSelectB.value = BY[oldB] ? oldB : '';
+    renderOrbitalResults();
+  }
+  function renderOrbitalResults() {
+    var chosen = [orbitalSelectA.value, orbitalSelectB.value].filter(Boolean);
+    $('#orbital-results').innerHTML = chosen.map(function (sym, index) {
+      var e = BY[sym], shellCounts = e.shells || [];
+      var shellLabel = language === 'ar' ? 'توزيع الأغلفة: ' : 'Shell distribution: ';
+      return '<article class="orbital-card"><h3>' + (language === 'ar' ? 'الذرة ' + (index ? 'الثانية' : 'الأولى') : 'Atom ' + (index ? 'B' : 'A')) + ' · ' + elementName(e) + ' (' + e.symbol + ', Z=' + e.number + ')</h3>' +
+        '<div class="orbital-config" dir="ltr">' + calculateConfig(e.number).replace(/(\d+)(?=\s|$)/g, '<sup>$1</sup>') + '</div>' +
+        '<div class="orbital-shells">' + shellLabel + shellCounts.join(' · ') + (language === 'ar' ? ' إلكترونًا' : ' electrons') + '</div></article>';
+    }).join('');
+  }
+  orbitalSelectA.addEventListener('change', renderOrbitalResults);
+  orbitalSelectB.addEventListener('change', renderOrbitalResults);
+  $('#orbitals-btn').addEventListener('click', function () { orbitalModal.classList.add('open'); orbitalModal.setAttribute('aria-hidden','false'); });
+  $$('[data-close-tool]').forEach(function (b) { b.addEventListener('click', function () { orbitalModal.classList.remove('open'); orbitalModal.setAttribute('aria-hidden','true'); }); });
+
+  var ACIDS = [
+    ['Hydrochloric acid','HCl','Strong, monoprotic'],['Hydrobromic acid','HBr','Strong, monoprotic'],['Hydroiodic acid','HI','Strong, monoprotic'],['Hydrofluoric acid','HF','Weak, monoprotic'],
+    ['Nitric acid','HNO₃','Strong, monoprotic'],['Sulfuric acid','H₂SO₄','Strong, diprotic'],['Sulfurous acid','H₂SO₃','Weak, diprotic'],['Phosphoric acid','H₃PO₄','Weak, triprotic'],
+    ['Carbonic acid','H₂CO₃','Weak, diprotic'],['Acetic acid','CH₃COOH','Weak, monoprotic'],['Formic acid','HCOOH','Weak, monoprotic'],['Citric acid','C₆H₈O₇','Weak, triprotic'],
+    ['Oxalic acid','H₂C₂O₄','Weak, diprotic'],['Boric acid','H₃BO₃','Weak'],['Perchloric acid','HClO₄','Strong, monoprotic']
+  ];
+  function renderAcids() {
+    var namesAr = {'Hydrochloric acid':'حمض الهيدروكلوريك','Hydrobromic acid':'حمض الهيدروبروميك','Hydroiodic acid':'حمض الهيدرويوديك','Hydrofluoric acid':'حمض الهيدروفلوريك','Nitric acid':'حمض النيتريك','Sulfuric acid':'حمض الكبريتيك','Sulfurous acid':'حمض الكبريتوز','Phosphoric acid':'حمض الفوسفوريك','Carbonic acid':'حمض الكربونيك','Acetic acid':'حمض الأسيتيك','Formic acid':'حمض الفورميك','Citric acid':'حمض الستريك','Oxalic acid':'حمض الأكساليك','Boric acid':'حمض البوريك','Perchloric acid':'حمض البيركلوريك'};
+    var kindsAr = {'Strong, monoprotic':'قوي، أحادي البروتون','Weak, monoprotic':'ضعيف، أحادي البروتون','Strong, diprotic':'قوي، ثنائي البروتون','Weak, diprotic':'ضعيف، ثنائي البروتون','Weak, triprotic':'ضعيف، ثلاثي البروتون','Weak':'ضعيف'};
+    $('#acid-list').innerHTML = ACIDS.map(function (a) { return '<tr><td>' + (language === 'ar' ? namesAr[a[0]] : a[0]) + '</td><td>' + a[1] + '</td><td>' + (language === 'ar' ? kindsAr[a[2]] : a[2]) + '</td></tr>'; }).join('');
+  }
+  $('#acids-btn').addEventListener('click', function () { acidsModal.classList.add('open'); acidsModal.setAttribute('aria-hidden','false'); });
+  $$('[data-close-acids]').forEach(function (b) { b.addEventListener('click', function () { acidsModal.classList.remove('open'); acidsModal.setAttribute('aria-hidden','true'); }); });
+  fillOrbitalSelects(); renderAcids();
+
+  function applyLanguage() {
+    var ar = language === 'ar';
+    window.CHEM_LANGUAGE = language;
+    document.documentElement.lang = ar ? 'ar' : 'en';
+    document.documentElement.dir = ar ? 'rtl' : 'ltr';
+    $('#lang-toggle').textContent = ar ? 'English' : 'عربي';
+    $('#lang-toggle').title = ar ? 'Switch to English' : 'التبديل إلى العربية';
+    $('.brand-text h1').textContent = tr('Chemistry Lab');
+    $('.brand-text p').textContent = tr('Interactive periodic table & real-time reaction simulator');
+    $('#search').placeholder = tr('Search element, symbol or number…');
+    $('.select-wrap > span').textContent = tr('Colour');
+    var colorLabels = {category:'Category',state:'State at temperature',electronegativity:'Electronegativity',mass:'Atomic mass'};
+    $$('#color-mode option').forEach(function (o) { o.textContent = tr(colorLabels[o.value]); });
+    $('#orbitals-btn').textContent = tr('Electron tool'); $('#acids-btn').textContent = tr('Acids');
+    $('#help-btn').title = tr('How to use'); $('#sound-toggle').title = ar ? 'تبديل الصوت' : 'Toggle sound'; $('#lab h2').textContent = '⚗️ ' + tr('Reaction Lab');
+    $('#lab-clear').textContent = tr('Clear'); $('#lab-clear').title = tr('Empty the cauldron');
+    $('#cauldron-hint').innerHTML = '<span class="big">＋</span><span>' + tr('Shift-click elements to select,') + '<br/>' + tr('then drag them in — or hit Mix.') + '</span>';
+    $('.thermo-label').textContent = tr('🌡️ Temperature');
+    $$('.thermo-quick [data-temp]').forEach(function (b) { var labels={'0':'❄️ 0 K','195':'🧊 Dry ice','298':'🏠 Room','373':'♨️ Boiling','1300':'🔥 Furnace','6000':'☀️ Sun'}; b.textContent = tr(labels[b.dataset.temp]); });
+    $('#add-air').textContent = tr('🌬️ Air (O₂)'); $('#add-water').textContent = tr('💧 Water'); $('#spark').textContent = tr('⚡ Spark');
+    $('#mix-btn').textContent = tr('Mix it! ⚗️'); $('#discoveries h3').firstChild.textContent = tr('🏆 Discoveries ');
+    $('#ptable').setAttribute('aria-label', ar ? 'الجدول الدوري للعناصر' : 'Periodic table of elements');
+    $('#lab').setAttribute('aria-label', tr('Reaction Lab'));
+    $('#orbitals-title').textContent = tr('Electron configuration calculator'); $('.tool-intro', orbitalModal).textContent = tr('Choose up to two elements. The calculator fills orbitals in Aufbau order and shows each atom separately.');
+    $('#orbital-a-label').textContent = tr('Atom A'); $('#orbital-b-label').textContent = tr('Atom B (optional)');
+    $('#acids-title').textContent = tr('Common acids'); $('.tool-intro', acidsModal).textContent = tr('A reference table of common acids and their formulas.');
+    $$('.acid-table th').forEach(function (th, i) { th.textContent = tr(['Name','Formula','Type'][i]); });
+    $('#help h2').textContent = tr('⚗️ How to use the Chemistry Lab');
+    $('#atom-toggle-labels').textContent = tr('Labels'); $('#atom-toggle-spin').textContent = tr('Spin'); $('#atom-toggle-cloud').textContent = tr('Cloud view');
+    $('.atom-hint').textContent = ar ? 'اسحب للتدوير · مرر للتكبير' : 'drag to rotate · scroll to zoom';
+    $('.footer-warn').textContent = ar ? 'بيانات الديناميكا الحرارية حقيقية عند توفرها، لكن المحاكاة مبسطة وتعليمية وليست بديلًا عن إجراءات السلامة المخبرية. لا تخلط مواد كيميائية حقيقية.' : 'Reactions use real standard thermodynamic data (ΔH, ΔS, ΔG @ 298 K) where available, with simplified kinetics — educational, not a substitute for real lab safety. Never mix chemicals for real without proper training.';
+    $('#footer > span:first-child').innerHTML = ar ? 'بيانات العناصر من <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Periodic-Table-JSON</a> · الصور من ويكيميديا كومنز.' : 'Element data from the public-domain <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Periodic-Table-JSON</a> · imagery via Wikimedia Commons.';
+    $('#atom-toggle-labels').textContent = tr('Labels'); $('#atom-toggle-spin').textContent = tr('Spin'); $('#atom-toggle-cloud').textContent = tr('Cloud view');
+    $('.atom-hint').textContent = ar ? 'اسحب للتدوير · مرر للتكبير' : 'drag to rotate · scroll to zoom';
+    $('.footer-warn').textContent = ar ? 'بيانات الديناميكا الحرارية حقيقية عند توفرها، لكن المحاكاة مبسطة وتعليمية وليست بديلًا عن إجراءات السلامة المخبرية. لا تخلط مواد كيميائية حقيقية.' : 'Reactions use real standard thermodynamic data (ΔH, ΔS, ΔG @ 298 K) where available, with simplified kinetics — educational, not a substitute for real lab safety. Never mix chemicals for real without proper training.';
+    $('#footer > span:first-child').innerHTML = ar ? 'بيانات العناصر من <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Periodic-Table-JSON</a> · الصور من ويكيميديا كومنز.' : 'Element data from the public-domain <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Periodic-Table-JSON</a> · imagery via Wikimedia Commons.';
+    if (ar) {
+      var helpAr = ['مرر المؤشر فوق أي عنصر لعرض تفاصيله.','اضغط على عنصر لفتح مستكشف الذرة ثلاثي الأبعاد.','اضغط مع Shift أو Ctrl أو ⌘ لاختيار عدة عناصر.','اسحب العناصر إلى وعاء التفاعل أو اضغط «امزج».','حرّك مقياس الحرارة لتسخين الخليط أو تبريده.','أضف الهواء أو الماء أو شرارة لبدء التفاعل.','غيّر طريقة تلوين الجدول حسب الحالة أو السالبية أو الكتلة.','يعرض كل تفاعل قيم ΔH وΔS وΔG ومخطط الطاقة.','اقتراح «التالي» يساعدك على اختيار التجربة التالية.','تُضاف المركبات الجديدة إلى قائمة المكتشفات.'];
+      $$('.help-list li').forEach(function (li, i) { li.textContent = helpAr[i]; });
+      $('.help-foot').textContent = 'جرّب Na + Cl، ثم 2 H + O مع شرارة، ثم أضف K إلى الماء. 💥';
+    } else {
+      var helpEn = ['Hover any element to see its details in the big card.','Click an element to open the hi-res 3D atom explorer with live electron shells and annotations.','Shift-click (or ⌘/Ctrl-click) to select multiple elements — they glow.','Drag selected elements into the cauldron, or press Mix it!','Slide the temperature to heat or freeze the mix — some reactions only happen when hot.','Add Air, Water or a Spark to trigger combustion, rusting, explosions…','Recolour the table by state of matter at your chosen temperature, electronegativity, or mass.','Every reaction shows real thermodynamics — ΔH, ΔS and ΔG with an energy diagram. Watch ΔG flip sign as you change the temperature!','Stuck? The 💡 Next hint always suggests what to try — a spark, some water, more heat…','Make a new compound and it joins your Discoveries list. How many can you find?'];
+      $$('.help-list li').forEach(function (li, i) { li.textContent = helpEn[i]; });
+      $('.help-foot').textContent = 'Tip: try Na + Cl, then 2 H + O with a spark, then drop K into Water. 💥';
+    }
+    E.forEach(function (e) { var nm = e._cell && $('.nm', e._cell); if (nm) nm.textContent = elementName(e); });
+    fillOrbitalSelects(); renderAcids(); colorTable(); buildLegend();
+    if (modalSym) { renderDataPane(BY[modalSym]); if (viewer && viewer.ok) viewer.load(BY[modalSym]); }
+    showFocus(BY['H']);
+    if (cauldron.length) doSimulate(false);
+  }
+  $('#lang-toggle').addEventListener('click', function () { language = language === 'en' ? 'ar' : 'en'; localStorage.setItem('chemlab.language', language); applyLanguage(); });
+
+  function renderDataPane(e) {
+    var col = CAT[e.category] || CAT.unknown;
+    var img = e.image && e.image.url
+      ? '<div class="dp-section-title">' + tr('What it looks like') + '</div><figure class="dp-image"><img loading="lazy" src="' + e.image.url + '" alt="' + (e.image.title || elementName(e)) + '" onerror="this.parentNode.style.display=\'none\'"/><figcaption>' + (e.image.title || elementName(e)) + (e.appearance ? ' — ' + e.appearance : '') + '</figcaption></figure>'
+      : '';
+    var spectral = e.spectral && /^https?:/.test(e.spectral) ? '' : '';
+    dataPane.innerHTML =
+      '<div class="dp-title"><h2>' + elementName(e) + '</h2><span class="dp-sym">' + e.symbol + ' · Z = ' + e.number + '</span></div>' +
+      '<div class="dp-cat"><span class="dot" style="background:' + col + '"></span>' + tr(CAT_LABEL[e.category] || e.category) + '</div>' +
+      (e.summary ? '<p class="dp-summary">' + (language === 'ar' ? 'عنصر كيميائي عدده الذري ' + e.number + '، ورمزه ' + e.symbol + '. تُعرض المعلومات التفصيلية باللغة الإنجليزية في المصدر.' : clip(e.summary, 360) + (e.source ? ' <a href="' + e.source + '" target="_blank" rel="noopener">more →</a>' : '')) + '</p>' : '') +
+      '<div class="dp-section-title">' + tr('Electron configuration') + '</div>' +
+      '<div class="dp-config">' + (e.config || '—') + (e.configSemantic ? '  ·  ' + e.configSemantic : '') + '</div>' +
+      '<div class="dp-section-title">' + tr('Electron shells') + '</div>' + Atom.bohrSVG(e) +
+      '<div class="dp-section-title">' + tr('Properties') + '</div>' +
+      '<div class="dp-props">' +
+        dp(tr('Atomic mass'), (e.mass != null ? e.mass + ' u' : '—')) +
+        dp(tr('Category'), tr(CAT_LABEL[e.category] || e.category)) +
+        dp(tr('Period / Group'), e.period + ' / ' + (e.group || '—')) +
+        dp(tr('Block'), (e.block || '—') + '-block') +
+        dp(tr('State now'), tr(Chem.stateAt(e.symbol, temp)) + ' (' + Chem.fmtT(temp) + ')') +
+        dp(language === 'ar' ? 'الحالة القياسية' : 'Phase at STP', language === 'ar' ? ({Gas:'غاز',Liquid:'سائل',Solid:'صلب'}[e.phase] || e.phase || '—') : (e.phase || '—')) +
+        dp(language === 'ar' ? 'درجة الانصهار' : 'Melting point', kc(e.melt)) +
+        dp(language === 'ar' ? 'درجة الغليان' : 'Boiling point', kc(e.boil)) +
+        dp(tr('Density'), e.density != null ? e.density + ' g/cm³' : '—') +
+        dp(tr('Electronegativity'), e.electronegativity != null ? e.electronegativity + (language === 'ar' ? ' (مقياس باولنغ)' : ' (Pauling)') : '—') +
+        dp(tr('Electron affinity'), e.electronAffinity != null ? e.electronAffinity + ' kJ/mol' : '—') +
+        dp(language === 'ar' ? 'طاقة التأين الأولى' : '1st ionisation', e.ionization != null ? e.ionization + ' kJ/mol' : '—') +
+        dp(tr('Reactivity'), reactBar(e.symbol)) +
+        dp(tr('Discovered by'), e.discoveredBy || '—') +
+      '</div>' +
+      img +
+      '<div class="dp-add">' +
+        '<button id="dp-add-lab">' + tr('＋ Add to Lab') + '</button>' +
+        '<button id="dp-select">' + tr(selection.has(e.symbol) ? '✓ Selected' : '✦ Select') + '</button>' +
+      '</div>';
+    $('#dp-add-lab').addEventListener('click', function () { addToCauldron(e.symbol); flashBtn(this, language === 'ar' ? 'تمت الإضافة ✓' : 'Added ✓'); });
+    $('#dp-select').addEventListener('click', function () { toggleSelect(e.symbol); this.textContent = tr(selection.has(e.symbol) ? '✓ Selected' : '✦ Select'); });
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
   }
   function dp(k, v) { return '<div class="dp-prop"><span>' + k + '</span><b>' + v + '</b></div>'; }
   function reactBar(sym) { var r = Chem.reactivity(sym); return '★'.repeat(Math.max(0, Math.round(r / 2))) + '☆'.repeat(5 - Math.max(0, Math.round(r / 2))); }
@@ -272,7 +477,11 @@
   function updateStateReadout() {
     if (!cauldron.length) { stateRead.innerHTML = ''; return; }
     stateRead.innerHTML = 'At <b>' + Chem.fmtT(temp) + '</b>: ' + cauldron.map(function (s) {
+<<<<<<< HEAD
       return BY[s].symbol + ' <b>' + Chem.stateAt(s, temp).toLowerCase() + '</b>';
+=======
+      return BY[s].symbol + ' <b>' + tr(Chem.stateAt(s, temp)).toLowerCase() + '</b>';
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
     }).join(' · ');
   }
   tempRead.textContent = Math.round(temp - 273.15) + ' °C · ' + temp + ' K';
@@ -311,6 +520,7 @@
     }
   }
 
+<<<<<<< HEAD
   function renderResult(res) {
     var tags = [];
     if (res.effects) {
@@ -338,11 +548,81 @@
       '<div>' + tags.join('') + '</div>' +
       hintHtml +
       (res.fact ? '<div class="r-fact">' + res.fact + '</div>' : '');
+=======
+  var AR_REACTIONS = {
+    'Combustion → Water':['احتراق الهيدروجين لتكوين الماء','يتحد الهيدروجين والأكسجين بعد إشعال الخليط، وينتج الماء مع انطلاق طاقة كبيرة.'],
+    'Hydrogen + Oxygen (no spark)':['الهيدروجين والأكسجين دون شرارة','يبقى الغازان مختلطين دون تفاعل ملحوظ حتى تتوفر شرارة أو حرارة كافية.'],
+    'Sodium + Chlorine → Table Salt':['الصوديوم + الكلور ← ملح الطعام','يتفاعل الصوديوم مع الكلور بعنف ليكوّن كلوريد الصوديوم، وهو ملح الطعام.'],
+    'Sodium in Water':['الصوديوم في الماء','يتفاعل الصوديوم مع الماء مطلقًا غاز الهيدروجين ومكوّنًا هيدروكسيد الصوديوم، وقد يشتعل الغاز.'],
+    'Potassium in Water':['البوتاسيوم في الماء','يتفاعل البوتاسيوم بسرعة مع الماء، مطلقًا الهيدروجين ومكوّنًا هيدروكسيد البوتاسيوم.'],
+    'Lithium in Water':['الليثيوم في الماء','يتفاعل الليثيوم مع الماء مطلقًا الهيدروجين ومكوّنًا هيدروكسيد الليثيوم.'],
+    'Caesium in Water':['السيزيوم في الماء','يتفاعل السيزيوم بعنف شديد مع الماء، مطلقًا الهيدروجين ومكوّنًا هيدروكسيد السيزيوم.'],
+    'Burning Carbon':['احتراق الكربون','يحترق الكربون في الأكسجين مكوّنًا ثاني أكسيد الكربون.'],
+    'Burning Magnesium':['احتراق المغنيسيوم','يحترق المغنيسيوم بوهج أبيض ساطع مكوّنًا أكسيد المغنيسيوم.'],
+    'Rusting Iron':['صدأ الحديد','بوجود الماء والهواء يتحول الحديد تدريجيًا إلى صدأ الحديد.'],
+    'Iron + Oxygen → Rust':['الحديد + الأكسجين ← الصدأ','يتحد الحديد مع الأكسجين مكوّنًا أكسيد الحديد، المعروف بالصدأ.'],
+    'Thermite!':['تفاعل الثرميت','ينتزع الألومنيوم الأكسجين من أكسيد الحديد، وينتج حديد شديد السخونة وأكسيد الألومنيوم.'],
+    'Calcium + Oxygen → Quicklime':['الكالسيوم + الأكسجين ← الجير الحي','يحترق الكالسيوم في الأكسجين مكوّنًا أكسيد الكالسيوم، المعروف بالجير الحي.'],
+    'Hydrogen + Chlorine':['الهيدروجين + الكلور','يمكن أن يبدأ الضوء تفاعلًا متسلسلًا بين الهيدروجين والكلور، وينتج كلوريد الهيدروجين.'],
+    'Hydrogen + Sulfur':['الهيدروجين + الكبريت','يتكون كبريتيد الهيدروجين، وهو غاز سام ذو رائحة البيض الفاسد.'],
+    'Haber Process → Ammonia':['عملية هابر ← الأمونيا','يتحد النيتروجين والهيدروجين عند حرارة وضغط مرتفعين لتكوين الأمونيا.'],
+    'Nitrogen + Hydrogen (too cold)':['النيتروجين + الهيدروجين (حرارة منخفضة)','الرابطة الثلاثية في النيتروجين قوية؛ يحتاج التفاعل إلى حرارة وضغط مناسبين.'],
+    'Carbon + Hydrogen → Methane':['الكربون + الهيدروجين ← الميثان','يتحد الكربون والهيدروجين لتكوين الميثان، أبسط الهيدروكربونات.'],
+    'Silicon + Oxygen → Silica':['السيليكون + الأكسجين ← السيليكا','يتحد السيليكون والأكسجين لتكوين ثاني أكسيد السيليكون، الموجود في الرمل والكوارتز.'],
+    'Burning Sulfur':['احتراق الكبريت','يحترق الكبريت بلهب أزرق مكوّنًا غاز ثاني أكسيد الكبريت.'],
+    'Gold + Oxygen → Nothing':['الذهب + الأكسجين ← لا تفاعل','لا يتحد الذهب مع الأكسجين بسهولة، لذلك لا يصدأ في الظروف المعتادة.'],
+    'Gold dissolves in Mercury':['ذوبان الذهب في الزئبق','يذوب الذهب في الزئبق مكوّنًا ملغمًا.'],
+    'Complex mixture':['خليط معقد','يحتوي هذا الخليط على عدة عناصر وقد تتكون منه نواتج مختلفة.'],
+    'Frozen solid':['تجمد تام','عند هذه الحرارة المنخفضة جدًا تكون الذرات شبه ساكنة؛ ارفع الحرارة لبدء التفاعل.']
+  };
+  function localizedElementNames(text) {
+    if (language !== 'ar') return text;
+    E.slice().sort(function (a, b) { return b.name.length - a.name.length; }).forEach(function (e) { text = text.split(e.name).join(elementName(e)); });
+    return text;
+  }
+  function renderResult(res) {
+    var translated = language === 'ar' ? AR_REACTIONS[res.title] : null;
+    var resultTitle = translated ? translated[0] : (language === 'ar'
+      ? (res.kind === 'element' ? localizedElementNames(res.title) : res.kind === 'inert' ? localizedElementNames(res.title).replace(' — a noble gas',' — غاز نبيل') : res.kind === 'unstable' ? localizedElementNames(res.title).replace(' — fleeting & synthetic',' — عنصر فائق الثقل اصطناعي') : 'نتيجة التفاعل الكيميائي')
+      : res.title);
+    var resultDesc = translated ? translated[1] : (language === 'ar'
+      ? (res.kind === 'alloy' ? 'ينتج عن مزج الفلزات سبيكة، وهي خليط فلزي وليست مركبًا كيميائيًا.'
+        : 'توضح المحاكاة النتيجة المتوقعة للعناصر المختارة عند الظروف الحالية. راجع المعادلة والنواتج المتوقعة أدناه.')
+      : res.desc);
+    var arabicProducts = {'Water':'الماء','Sodium chloride (table salt)':'كلوريد الصوديوم (ملح الطعام)','Sodium hydroxide':'هيدروكسيد الصوديوم','Potassium hydroxide':'هيدروكسيد البوتاسيوم','Lithium hydroxide':'هيدروكسيد الليثيوم','Hydrogen':'الهيدروجين','Carbon dioxide':'ثاني أكسيد الكربون','Magnesium oxide':'أكسيد المغنيسيوم','Iron(III) oxide (rust)':'أكسيد الحديد الثلاثي (الصدأ)','Molten iron':'الحديد المنصهر','Aluminium oxide':'أكسيد الألومنيوم','Calcium oxide (quicklime)':'أكسيد الكالسيوم (الجير الحي)','Hydrogen chloride':'كلوريد الهيدروجين','Hydrogen sulfide':'كبريتيد الهيدروجين','Ammonia':'الأمونيا','Methane':'الميثان','Silicon dioxide (silica)':'ثاني أكسيد السيليكون (السيليكا)','Sulfur dioxide':'ثاني أكسيد الكبريت','Xenon difluoride':'ثنائي فلوريد الزينون'};
+    var tags = [];
+    if (res.effects) {
+      if (res.effects.explosion) tags.push(tag('💥 ' + tr('Explosive'), '#fb7185'));
+      if (res.effects.fire) tags.push(tag('🔥 ' + tr('Exothermic'), '#fb923c'));
+      if (res.effects.gas) tags.push(tag('💨 ' + tr('Gas'), '#38bdf8'));
+      if (res.effects.bubbles) tags.push(tag('🫧 ' + tr('Effervescent'), '#5eead4'));
+      if (res.effects.smoke) tags.push(tag('🌫️ ' + tr('Smoke'), '#94a3b8'));
+    }
+    if (res.kind === 'inert' || res.kind === 'no-reaction') tags.push(tag('✋ ' + tr('No reaction'), '#94a3b8'));
+    if (res.kind === 'alloy') tags.push(tag('🔗 ' + tr('Alloy'), '#fbbf24'));
+    var eq = res.equation ? '<div class="r-eq">' + res.equation + '</div>' : '';
+    var prods = (res.products && res.products.length)
+      ? '<div class="r-desc" style="margin-top:6px">' + (language === 'ar' ? 'النواتج: ' : 'Makes: ') + res.products.map(function (p) { return '<b>' + (language === 'ar' ? (arabicProducts[p.n] || localizedElementNames(p.n)) : p.n) + '</b> (' + Chem.formatFormula(p.f) + ')'; }).join('، ') + '</div>' : '';
+    var ea = res.effects && res.effects.explosion ? 34 : res.effects && res.effects.fire ? 22 : 12;
+    var thermoHtml = renderThermo(res.thermo, ea);
+    var hintHtml = res.hint ? '<div class="r-hint">💡 <b>' + (language === 'ar' ? 'الخطوة التالية:' : 'Next:') + '</b> ' + (language === 'ar' ? 'جرّب تغيير الحرارة أو إضافة الماء أو الهواء أو شرارة.' : res.hint) + '</div>' : '';
+    resultEl.innerHTML =
+      '<div class="r-head"><span class="r-emoji">' + (res.emoji || '⚗️') + '</span><span class="r-title">' + resultTitle + '</span></div>' +
+      eq +
+      '<div class="r-desc">' + resultDesc + '</div>' +
+      prods +
+      thermoHtml +
+      '<div class="hazard"><span>' + tr('Drama') + '</span><span class="hazard-bar"><span class="hazard-fill" style="width:' + (res.hazard / 5 * 100) + '%"></span></span><span>' + tr(hazardWord(res.hazard)) + '</span></div>' +
+      '<div>' + tags.join('') + '</div>' +
+      hintHtml +
+      (res.fact ? '<div class="r-fact">' + (language === 'ar' ? 'تعتمد نتيجة التفاعل على درجة الحرارة والمواد المتفاعلة.' : res.fact) + '</div>' : '');
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
   }
   function renderThermo(t, ea) {
     if (!t) return '';
     var exo = t.dH < 0;
     var rows = '<div class="thermo-line">ΔH<sub>rxn</sub> = <b>' + (t.dH > 0 ? '+' : '') + t.dH + ' kJ</b> ' +
+<<<<<<< HEAD
       (exo ? '<span class="exo">🔥 exothermic</span>' : '<span class="endo">❄️ endothermic</span>') + '</div>';
     if (!t.estimated) {
       rows += '<div class="thermo-line">ΔS<sub>rxn</sub> = <b>' + (t.dS > 0 ? '+' : '') + t.dS + ' J/K</b></div>';
@@ -353,6 +633,18 @@
       rows += '<div class="thermo-cross">≈ estimated from electronegativity (Pauling); entropy not modelled.</div>';
     }
     return '<div class="thermo-block"><div class="dp-section-title">Thermodynamics' + (t.estimated ? ' (estimated)' : '') + '</div>' + energySVG(t, ea) + rows + '</div>';
+=======
+      (exo ? '<span class="exo">🔥 ' + (language === 'ar' ? 'طارد للحرارة' : 'exothermic') + '</span>' : '<span class="endo">❄️ ' + (language === 'ar' ? 'ماص للحرارة' : 'endothermic') + '</span>') + '</div>';
+    if (!t.estimated) {
+      rows += '<div class="thermo-line">ΔS<sub>rxn</sub> = <b>' + (t.dS > 0 ? '+' : '') + t.dS + ' J/K</b></div>';
+      rows += '<div class="thermo-line">ΔG ' + (language === 'ar' ? 'عند ' : 'at ') + Math.round(t.T - 273.15) + ' °C = <b>' + (t.dG > 0 ? '+' : '') + t.dG + ' kJ</b> → ' +
+        (t.dG < 0 ? '<span class="spont">✅ ' + (language === 'ar' ? 'تلقائي' : 'spontaneous') + '</span>' : '<span class="nonspont">🚫 ' + (language === 'ar' ? 'غير تلقائي' : 'not spontaneous') + '</span>') + '</div>';
+      if (t.crossover != null) { var cC = Math.round(t.crossover - 273.15); if (cC > -270 && cC < 5900) rows += '<div class="thermo-cross">' + (language === 'ar' ? 'يُفضّل التفاعل ' + (t.dS > 0 ? 'فوق' : 'تحت') : 'Favoured ' + (t.dS > 0 ? 'above' : 'below')) + ' <b>' + cC + ' °C</b> ' + (language === 'ar' ? '(عند ΔG = 0)' : '(where ΔG = 0)') + '</div>'; }
+    } else {
+      rows += '<div class="thermo-cross">' + (language === 'ar' ? '≈ تقدير اعتمادًا على السالبية الكهربائية (باولنغ)؛ لم تُنمذج الإنتروبيا.' : '≈ estimated from electronegativity (Pauling); entropy not modelled.') + '</div>';
+    }
+    return '<div class="thermo-block"><div class="dp-section-title">' + (language === 'ar' ? 'الديناميكا الحرارية' : 'Thermodynamics') + (t.estimated ? (language === 'ar' ? ' (تقديري)' : ' (estimated)') : '') + '</div>' + energySVG(t, ea) + rows + '</div>';
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
   }
   function energySVG(t, ea) {
     var W = 300, H = 106, yr = 48, k = 38 / 1700;
@@ -364,9 +656,15 @@
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="energy-svg" xmlns="http://www.w3.org/2000/svg">';
     s += '<line x1="250" y1="' + yr + '" x2="250" y2="' + yp + '" stroke="rgba(255,255,255,.3)" stroke-dasharray="3 3"/>';
     s += '<path d="' + path + '" fill="none" stroke="' + col + '" stroke-width="2.5" stroke-linejoin="round"/>';
+<<<<<<< HEAD
     s += '<text x="8" y="' + (yr - 7) + '" class="es-lbl">reactants</text>';
     s += '<text x="292" y="' + (yp > yr ? yp + 13 : yp - 7) + '" text-anchor="end" class="es-lbl">products</text>';
     if (ea >= 22) s += '<text x="150" y="' + (ypeak - 4) + '" text-anchor="middle" class="es-lbl dim">activation' + (ea >= 34 ? ' (spark)' : '') + '</text>';
+=======
+    s += '<text x="8" y="' + (yr - 7) + '" class="es-lbl">' + (language === 'ar' ? 'المتفاعلات' : 'reactants') + '</text>';
+    s += '<text x="292" y="' + (yp > yr ? yp + 13 : yp - 7) + '" text-anchor="end" class="es-lbl">' + (language === 'ar' ? 'النواتج' : 'products') + '</text>';
+    if (ea >= 22) s += '<text x="150" y="' + (ypeak - 4) + '" text-anchor="middle" class="es-lbl dim">' + (language === 'ar' ? 'طاقة التنشيط' : 'activation') + (ea >= 34 ? (language === 'ar' ? ' (شرارة)' : ' (spark)') : '') + '</text>';
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
     s += '<text x="256" y="' + ((yr + yp) / 2 + 3) + '" class="es-lbl">ΔH</text>';
     s += '</svg>';
     return s;
@@ -480,14 +778,22 @@
     var q = this.value.trim().toLowerCase();
     if (!q) { E.forEach(function (e) { e._cell.classList.remove('dim', 'search-hit'); }); return; }
     E.forEach(function (e) {
+<<<<<<< HEAD
       var hit = e.name.toLowerCase().indexOf(q) >= 0 || e.symbol.toLowerCase() === q || e.symbol.toLowerCase().indexOf(q) === 0 || String(e.number) === q;
+=======
+      var hit = e.name.toLowerCase().indexOf(q) >= 0 || (AR_NAMES[e.symbol] || '').toLowerCase().indexOf(q) >= 0 || e.symbol.toLowerCase() === q || e.symbol.toLowerCase().indexOf(q) === 0 || String(e.number) === q;
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
       e._cell.classList.toggle('search-hit', hit); e._cell.classList.toggle('dim', !hit);
     });
   });
 
   // keyboard
   document.addEventListener('keydown', function (ev) {
+<<<<<<< HEAD
     if (ev.key === 'Escape') { if (modal.classList.contains('open')) closeModal(); else if ($('#help').classList.contains('open')) $('#help').classList.remove('open'); }
+=======
+    if (ev.key === 'Escape') { if (modal.classList.contains('open')) closeModal(); else if ($('#help').classList.contains('open')) $('#help').classList.remove('open'); else if (orbitalModal.classList.contains('open')) orbitalModal.classList.remove('open'); else if (acidsModal.classList.contains('open')) acidsModal.classList.remove('open'); }
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
     if (modal.classList.contains('open')) { if (ev.key === 'ArrowRight') navModal(1); if (ev.key === 'ArrowLeft') navModal(-1); }
   });
 
@@ -509,4 +815,9 @@
 
   // show H in focus card initially
   showFocus(BY['H']);
+<<<<<<< HEAD
 })();
+=======
+  applyLanguage();
+})();
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)

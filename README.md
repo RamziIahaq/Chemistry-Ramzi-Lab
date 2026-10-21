@@ -1,9 +1,15 @@
 # ⚗️ Chemistry Lab
 **An interactive periodic table, hi-res 3D atom explorer, and a real-time chemistry mixing lab — for fun and learning.**
 
+<<<<<<< HEAD
 🔗 **Live:** https://chemistr-nexus.netlify.app
 
 ![Chemistry Lab](https://chemistr-nexus.netlify.app)
+=======
+🔗 **Live:** https://chemstry-ramzi.netlify.app
+
+![Chemistry Lab](https://chemstry-ramzi.netlify.app)
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 
 ---
 
@@ -22,6 +28,12 @@
 - **Particle FX + sound** — explosions flash the screen and shake it, fires and bubbles and smoke animate in the cauldron, all with synthesized Web-Audio effects (toggleable).
 - **Discoveries** — every new compound you make is logged and saved across visits. How many can you find?
 - **Colour overlays** — recolour the whole table by **state of matter at the current temperature**, electronegativity, or atomic mass.
+<<<<<<< HEAD
+=======
+- **Arabic interface** — use the language button to switch the interface and element names between English and Arabic.
+- **Electron configuration calculator** — calculate the orbital configuration for one or two atoms from their atomic numbers.
+- **Acid reference** — browse common acids, formulas, and acid types in a separate table.
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 
 ## How to use
 
@@ -29,6 +41,10 @@
 2. **Shift-click** (or ⌘/Ctrl-click) several elements → they're selected.
 3. **Drag** them into the cauldron, or press **Mix it!**
 4. Slide the **temperature**, add **Air / Water / Spark**, and watch.
+<<<<<<< HEAD
+=======
+5. Use **Electron tool** to calculate orbital configurations, or **Acids** to open the acid reference table. The language button switches to Arabic.
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 
 Try: `Na + Cl`, then `H + O` with a spark, then drop `K` into water. 💥
 
@@ -38,21 +54,35 @@ Plain HTML/CSS/JavaScript — no build step, no framework. [Three.js](https://th
 
 ```
 index.html          markup + CDN includes
+<<<<<<< HEAD
 css/style.css       dark "lab bench" theme
 js/reactions.js     the chemistry engine (curated DB + generic predictor)
 js/atom.js          Three.js 3D atom + SVG fallback diagram
 js/app.js           table, hover, modal, lab, FX, sound
 data/elements.js    generated element dataset (window.ELEMENTS)
 tools/build-data.js regenerates data/elements.js from the raw source
+=======
+CSS/style.css       dark "lab bench" theme
+js/reactions.js     the chemistry engine (curated DB + generic predictor)
+js/atom.js          Three.js 3D atom + SVG fallback diagram
+js/app.js           table, hover, modal, lab, FX, sound
+Data/elements.js    generated element dataset (window.ELEMENTS)
+tools/build-data.js regenerates Data/elements.js from the raw source
+tools/serve.mjs      local static server for npm run serve
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 ```
 
 Regenerate the dataset: `npm run build-data`. Serve locally: `npm run serve` (or any static server) and open http://localhost:8754.
 
 ## Data & credits
 
+<<<<<<< HEAD
 Element data from the public-domain [Bowserinator / Periodic-Table-JSON](<a href="https://github.com/RamziIahaq" target="_blank">
   GitHub
 </a>); element photographs via Wikimedia Commons (CC BY 3.0, "Hi-Res Images of Chemical Elements").
+=======
+Element data from the public-domain [RamziIahaq](https://github.com/RamziIahaq); element photographs via Wikimedia Commons (CC BY 3.0, "Hi-Res Images of Chemical Elements").
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 
 ## ⚠️ Note
 
@@ -60,4 +90,8 @@ The thermodynamics (ΔH, ΔS, ΔG, crossover temperatures) uses **real standard-
 
 ## License
 
+<<<<<<< HEAD
 Ramzi 
+=======
+Ramzi 
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)

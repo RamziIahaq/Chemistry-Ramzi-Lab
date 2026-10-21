@@ -139,8 +139,14 @@
       var anchor = new THREE.Object3D();
       anchor.position.set(0, R, 0);
       grp.add(anchor);
+<<<<<<< HEAD
       this._addLabel(anchor,
         'Shell ' + (s + 1) + ' (' + (SHELL_NAMES[s] || s + 1) + ') · ' + count + ' e⁻' + (isValence ? ' — valence' : ''),
+=======
+      var arabic = window.CHEM_LANGUAGE === 'ar';
+      this._addLabel(anchor,
+        (arabic ? 'الغلاف ' : 'Shell ') + (s + 1) + ' (' + (SHELL_NAMES[s] || s + 1) + ') · ' + count + ' e⁻' + (isValence ? (arabic ? ' — تكافؤ' : ' — valence') : ''),
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
         isValence ? 'valence' : 'shell');
     }
 
@@ -148,7 +154,11 @@
     var nAnchor = new THREE.Object3D();
     nAnchor.position.set(0, -nucleusR - 2, 0);
     this.root.add(nAnchor);
+<<<<<<< HEAD
     this._addLabel(nAnchor, 'Nucleus · ' + Z + ' p⁺' + (N ? ' · ' + N + ' n⁰' : ''), 'nucleus');
+=======
+    this._addLabel(nAnchor, (window.CHEM_LANGUAGE === 'ar' ? 'النواة · ' : 'Nucleus · ') + Z + ' p⁺' + (N ? ' · ' + N + ' n⁰' : ''), 'nucleus');
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 
     // electron cloud (hidden unless cloud view)
     this._buildCloud(shells, baseR, spacing);
@@ -339,4 +349,8 @@
   }
 
   window.Atom = { Viewer: AtomViewer, bohrSVG: bohrSVG, hasTHREE: hasTHREE };
+<<<<<<< HEAD
 })();
+=======
+})();
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)

@@ -11,7 +11,11 @@
 <meta property="og:description" content="Explore 118 elements in 3D and mix them in a real-time reaction simulator. Add heat, freeze things, cause explosions — educational chemistry, for fun." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+<<<<<<< HEAD
 <link rel="stylesheet" href="css/style.css" />
+=======
+<link rel="stylesheet" href="CSS/style.css" />
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 </head>
 <body>
 <div id="app">
@@ -36,6 +40,12 @@
           <option value="mass">Atomic mass</option>
         </select>
       </label>
+<<<<<<< HEAD
+=======
+      <button id="lang-toggle" class="icon-btn lang-btn" type="button" aria-label="Switch language" title="العربية">عربي</button>
+      <button id="orbitals-btn" class="ghost-btn" type="button">Electron tool</button>
+      <button id="acids-btn" class="ghost-btn" type="button">Acids</button>
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
       <button id="sound-toggle" class="icon-btn" title="Toggle sound" aria-pressed="true">🔊</button>
       <button id="help-btn" class="icon-btn" title="How to use">?</button>
     </div>
@@ -97,6 +107,7 @@
   </main>
 
   <footer id="footer">
+<<<<<<< HEAD
     <span>Element data from the public-domain <a href="https://github.com/RamziIahaq" target="_blank">
   GitHub
 </a>" target="_blank">
@@ -104,10 +115,42 @@
 </a>" target="_blank">
   GitHub
 </a>" target="_blank" rel="noopener">Periodic-Table-JSON</a> · imagery via Wikimedia Commons.</span>
+=======
+    <span>Element data from the public-domain <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Periodic-Table-JSON</a> · imagery via Wikimedia Commons.</span>
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
     <span class="footer-warn">Reactions use real standard thermodynamic data (ΔH, ΔS, ΔG @ 298 K) where available, with simplified kinetics — educational, not a substitute for real lab safety. Never mix chemicals for real without proper training.</span>
   </footer>
 </div>
 
+<<<<<<< HEAD
+=======
+<!-- Orbital configuration calculator -->
+<div id="orbitals-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-tool></div>
+  <section class="tool-card" role="dialog" aria-modal="true" aria-labelledby="orbitals-title">
+    <button class="modal-close" data-close-tool aria-label="Close">✕</button>
+    <h2 id="orbitals-title">Electron configuration calculator</h2>
+    <p class="tool-intro">Choose up to two elements. The calculator fills orbitals in Aufbau order and shows each atom separately.</p>
+    <div class="orbital-selects">
+      <label><span id="orbital-a-label">Atom A</span><select id="orbital-a"></select></label>
+      <label><span id="orbital-b-label">Atom B (optional)</span><select id="orbital-b"><option value="">—</option></select></label>
+    </div>
+    <div id="orbital-results" class="orbital-results" aria-live="polite"></div>
+  </section>
+</div>
+
+<!-- Common acids reference -->
+<div id="acids-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-acids></div>
+  <section class="tool-card acids-card" role="dialog" aria-modal="true" aria-labelledby="acids-title">
+    <button class="modal-close" data-close-acids aria-label="Close">✕</button>
+    <h2 id="acids-title">Common acids</h2>
+    <p class="tool-intro">A reference table of common acids and their formulas.</p>
+    <div class="acid-table-wrap"><table class="acid-table"><thead><tr><th>Name</th><th>Formula</th><th>Type</th></tr></thead><tbody id="acid-list"></tbody></table></div>
+  </section>
+</div>
+
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 <!-- Element 3D explorer modal -->
 <div id="modal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close></div>
@@ -156,7 +199,12 @@
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <!-- Data + app -->
+<<<<<<< HEAD
 <script src="data/elements.js"></script>
+=======
+<script src="Data/elements.js"></script>
+<script src="Data/arabic.js"></script>
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 <script src="js/reactions.js"></script>
 <script src="js/atom.js"></script>
 <script src="js/app.js"></script>
@@ -174,6 +222,7 @@
     }, 2000);
   });
 </script>
+<<<<<<< HEAD
 
 </body>
 </html>
@@ -194,3 +243,13 @@
 
 </div>
 </html>
+=======
+<div id="intro-screen" aria-hidden="true">
+  <div class="intro-label">CHEMISTRY LABORATORY</div>
+  <h1 class="intro-name">RAMZI</h1>
+  <div class="intro-status">INITIALIZING CHEMICAL SYSTEMS...</div>
+  <div class="intro-loader"></div>
+</div>
+</body>
+</html>
+>>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
