@@ -1,9 +1,9 @@
 # ⚗️ Chemistry Lab
 **An interactive periodic table, hi-res 3D atom explorer, and a real-time chemistry mixing lab — for fun and learning.**
 
-🔗 **Live:** https://42-apps.github.io/chemistry-simulator/
+🔗 **Live:** https://chemistr-nexus.netlify.app
 
-![Chemistry Lab](https://42-apps.github.io/chemistry-simulator/)
+![Chemistry Lab](https://chemistr-nexus.netlify.app)
 
 ---
 
