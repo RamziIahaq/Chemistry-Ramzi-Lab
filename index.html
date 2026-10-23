@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<title>Chemistry Lab — Periodic Table, Reactions &amp; Lewis Structures</title>
+<meta name="description" content="Explore all 118 elements, representative physical appearance, Pauling electronegativity, 3D atoms, reaction models, and molecular Lewis structures." />
+<meta name="theme-color" content="#0b0f1a" />
+<!-- Open Graph -->
+<meta property="og:title" content="Chemistry Lab — Periodic Table, Reactions & Lewis Structures" />
+<meta property="og:description" content="Explore 118 elements, representative appearance, electronegativity and Lewis structures in an interactive chemistry lab." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="CSS/style.css" />
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">
+      <span class="brand-mark">⚗️</span>
+      <div class="brand-text">
+        <h1>Chemistry Lab</h1>
+        <p>Interactive periodic table &amp; real-time reaction simulator</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Search element, symbol or number…" autocomplete="off" spellcheck="false" />
+      </div>
+      <label class="select-wrap">
+        <span>Colour</span>
+        <select id="color-mode" title="Colour the table by…">
+          <option value="category">Category</option>
+          <option value="type">Element type</option>
+          <option value="block">Orbital block</option>
+          <option value="state">State at temperature</option>
+          <option value="electronegativity">Electronegativity</option>
+          <option value="mass">Atomic mass</option>
+          <option value="appearance">Element appearance</option>
+        </select>
+      </label>
+      <button id="lang-toggle" class="icon-btn lang-btn" type="button" aria-label="Switch language" title="العربية">عربي</button>
+      <button id="orbitals-btn" class="ghost-btn" type="button">Electron tool</button>
+      <button id="molecules-btn" class="ghost-btn" type="button">Lewis molecules</button>
+      <button id="acids-btn" class="ghost-btn" type="button">Acids</button>
+      <button id="sound-toggle" class="icon-btn" title="Toggle sound" aria-pressed="true">🔊</button>
+      <button id="help-btn" class="icon-btn" title="How to use">?</button>
+    </div>
+  </header>
+
+  <main id="layout">
+    <section id="table-section">
+      <div id="ptable" role="grid" aria-label="Periodic table of elements"></div>
+      <div id="legend" aria-label="Category legend"></div>
+    </section>
+
+    <aside id="lab" aria-label="Reaction lab">
+      <div class="lab-head">
+        <h2>⚗️ Reaction Lab</h2>
+        <button id="lab-clear" class="ghost-btn" title="Empty the cauldron">Clear</button>
+      </div>
+
+      <div id="cauldron" class="cauldron" aria-label="Cauldron — drop elements here">
+        <canvas id="fx" width="320" height="180"></canvas>
+        <div id="cauldron-hint" class="cauldron-hint">
+          <span class="big">＋</span>
+          <span>Shift-click elements to select,<br/>then drag them in — or hit <b>Mix</b>.</span>
+        </div>
+        <div id="tray" class="tray"></div>
+      </div>
+
+      <div class="thermo">
+        <div class="thermo-row">
+          <span class="thermo-label">🌡️ Temperature</span>
+          <span id="temp-readout" class="thermo-readout">25 °C · 298 K</span>
+        </div>
+        <input id="temp" type="range" min="0" max="6000" value="298" step="1" />
+        <div class="thermo-row thermo-quick">
+          <button data-temp="0" class="chip-btn">❄️ 0 K</button>
+          <button data-temp="195" class="chip-btn">🧊 Dry ice</button>
+          <button data-temp="298" class="chip-btn">🏠 Room</button>
+          <button data-temp="373" class="chip-btn">♨️ Boiling</button>
+          <button data-temp="1300" class="chip-btn">🔥 Furnace</button>
+          <button data-temp="6000" class="chip-btn">☀️ Sun</button>
+        </div>
+        <div id="state-readout" class="state-readout"></div>
+      </div>
+
+      <div class="reagents">
+        <button id="add-air" class="reagent-btn" title="Add oxygen / air">🌬️ Air (O₂)</button>
+        <button id="add-water" class="reagent-btn" title="Splash with water">💧 Water</button>
+        <button id="spark" class="reagent-btn" title="Strike a spark / flame">⚡ Spark</button>
+      </div>
+      <p class="sound-note">Sound and visual effects are illustrative computer simulations, not recordings of real experiments.</p>
+
+      <button id="mix-btn" class="mix-btn" disabled>Mix it! ⚗️</button>
+
+      <div id="result" class="result" aria-live="polite"></div>
+
+      <div id="discoveries" class="discoveries">
+        <h3>🏆 Discoveries <span id="disc-count">0</span></h3>
+        <ul id="disc-list"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer id="footer">
+    <span>Element data from <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Chemistry-Ramzi-Lab</a> · imagery via Wikimedia Commons.</span>
+    <span class="footer-warn">Reactions use real standard thermodynamic data (ΔH, ΔS, ΔG @ 298 K) where available, with simplified kinetics — educational, not a substitute for real lab safety. Never mix chemicals for real without proper training.</span>
+  </footer>
+</div>
+
+<!-- Covalent molecule Lewis structure explorer -->
+<div id="molecules-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-molecules></div>
+  <section class="tool-card molecule-card" role="dialog" aria-modal="true" aria-labelledby="molecules-title">
+    <button class="modal-close" data-close-molecules aria-label="Close">✕</button>
+    <h2 id="molecules-title">Molecular Lewis structures</h2>
+    <p id="molecules-intro" class="tool-intro">Choose a known molecule to inspect its bonds and lone pairs. Structures are schematic 2D Lewis models.</p>
+    <label class="molecule-picker"><span id="molecule-picker-label">Molecule</span><select id="molecule-select"></select></label>
+    <div id="molecule-structure" class="molecule-structure" aria-live="polite"></div>
+  </section>
+</div>
+
+<!-- Orbital configuration calculator -->
+<div id="orbitals-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-tool></div>
+  <section class="tool-card" role="dialog" aria-modal="true" aria-labelledby="orbitals-title">
+    <button class="modal-close" data-close-tool aria-label="Close">✕</button>
+    <h2 id="orbitals-title">Electron configuration calculator</h2>
+    <p class="tool-intro">Choose up to two elements. The calculator fills orbitals in Aufbau order and shows each atom separately.</p>
+    <div class="orbital-selects">
+      <label><span id="orbital-a-label">Atom A</span><select id="orbital-a"></select></label>
+      <label><span id="orbital-b-label">Atom B (optional)</span><select id="orbital-b"><option value="">—</option></select></label>
+    </div>
+    <div id="orbital-results" class="orbital-results" aria-live="polite"></div>
+  </section>
+</div>
+
+<!-- Common acids reference -->
+<div id="acids-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-acids></div>
+  <section class="tool-card acids-card" role="dialog" aria-modal="true" aria-labelledby="acids-title">
+    <button class="modal-close" data-close-acids aria-label="Close">✕</button>
+    <h2 id="acids-title">Common acids</h2>
+    <p class="tool-intro">A reference table of common acids and their formulas.</p>
+    <div class="acid-table-wrap"><table class="acid-table"><thead><tr><th>Name</th><th>Formula</th><th>Type</th></tr></thead><tbody id="acid-list"></tbody></table></div>
+  </section>
+</div>
+
+<!-- Element 3D explorer modal -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" data-close title="Close">✕</button>
+    <button class="modal-nav prev" id="modal-prev" title="Previous element">‹</button>
+    <button class="modal-nav next" id="modal-next" title="Next element">›</button>
+    <div class="modal-grid">
+      <div class="atom-pane">
+        <div id="atom-canvas" class="atom-canvas"></div>
+        <div class="atom-controls">
+          <button id="atom-toggle-labels" class="mini-btn" aria-pressed="true">Labels</button>
+          <button id="atom-toggle-spin" class="mini-btn" aria-pressed="true">Spin</button>
+          <button id="atom-toggle-cloud" class="mini-btn" aria-pressed="false">Cloud view</button>
+          <span class="atom-hint">drag to rotate · scroll to zoom</span>
+        </div>
+      </div>
+      <div class="data-pane" id="data-pane"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Help overlay -->
+<div id="help" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-help></div>
+  <div class="help-card" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close-help title="Close">✕</button>
+    <h2>⚗️ How to use the Chemistry Lab</h2>
+    <ul class="help-list">
+      <li><b>Hover</b> any element to see its details in the big card.</li>
+      <li><b>Click</b> an element to open the atom explorer. Choose <b>Visual form</b> to reveal the nucleus, shells, electron motion, and probability cloud step by step.</li>
+      <li><b>Shift-click</b> (or ⌘/Ctrl-click) to <b>select multiple</b> elements — they glow.</li>
+      <li><b>Drag</b> selected elements into the <b>cauldron</b>, or press <b>Mix it!</b></li>
+      <li>Slide the <b>temperature</b> to heat or freeze the mix — some reactions only happen when hot.</li>
+      <li>Add <b>Air</b>, <b>Water</b> or a <b>Spark</b>. The result explains whether a fast reaction is modeled, and why.</li>
+      <li>Recolour the table by <b>state of matter</b> at your chosen temperature, electronegativity, or mass.</li>
+      <li>Available reactions can show standard-state <b>thermodynamics</b> — ΔH, ΔS and ΔG with an energy diagram. A ΔG sign does not tell you the reaction rate.</li>
+      <li>Explore the <b>molecular Lewis structures</b> tool to see clear bonds and lone pairs for common covalent molecules.</li><li>Stuck? The <b>💡 Next</b> hint suggests a useful next condition to try.</li>
+      <li>Make a new compound and it joins your <b>Discoveries</b> list. How many can you find?</li>
+    </ul>
+    <p class="help-foot">Tip: compare Na + Cl before and after a spark, then try K + Water. The lab distinguishes a possible hazard from a confirmed explosion.</p>
+  </div>
+</div>
+
+<!-- Libraries (global THREE build + OrbitControls) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<!-- Data + app -->
+<script src="Data/elements.js"></script>
+<script src="Data/arabic.js"></script>
+<script src="js/reactions.js"></script>
+<script src="js/atom.js"></script>
+<script src="js/molecules.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+  window.addEventListener("load", function () {
+    const intro = document.getElementById("intro-screen");
+
+    setTimeout(function () {
+      intro.classList.add("hide");
+
+      setTimeout(function () {
+        intro.remove();
+      }, 650);
+    }, 2000);
+  });
+</script>
+<div id="intro-screen" aria-hidden="true">
+  <div class="intro-label">CHEMISTRY LABORATORY</div>
+  <h1 class="intro-name">RAMZI</h1>
+  <div class="intro-status">INITIALIZING CHEMICAL SYSTEMS...</div>
+  <div class="intro-loader"></div>
+</div>
+</body>
+</html>
+
