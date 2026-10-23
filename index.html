@@ -3,19 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-<title>Chemistry Lab — Interactive Periodic Table &amp; Reaction Simulator</title>
-<meta name="description" content="Explore all 118 elements with live data, hi-res 3D atoms, and a real-time chemistry mixing lab. Combine elements, add heat or cold, and watch reactions unfold." />
+<title>Chemistry Lab — Periodic Table, Reactions &amp; Lewis Structures</title>
+<meta name="description" content="Explore all 118 elements, representative physical appearance, Pauling electronegativity, 3D atoms, reaction models, and molecular Lewis structures." />
 <meta name="theme-color" content="#0b0f1a" />
 <!-- Open Graph -->
-<meta property="og:title" content="Chemistry Lab — Interactive Periodic Table & Reaction Simulator" />
-<meta property="og:description" content="Explore 118 elements in 3D and mix them in a real-time reaction simulator. Add heat, freeze things, cause explosions — educational chemistry, for fun." />
+<meta property="og:title" content="Chemistry Lab — Periodic Table, Reactions & Lewis Structures" />
+<meta property="og:description" content="Explore 118 elements, representative appearance, electronegativity and Lewis structures in an interactive chemistry lab." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E" />
-<<<<<<< HEAD
-<link rel="stylesheet" href="css/style.css" />
-=======
 <link rel="stylesheet" href="CSS/style.css" />
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 </head>
 <body>
 <div id="app">
@@ -35,17 +31,18 @@
         <span>Colour</span>
         <select id="color-mode" title="Colour the table by…">
           <option value="category">Category</option>
+          <option value="type">Element type</option>
+          <option value="block">Orbital block</option>
           <option value="state">State at temperature</option>
           <option value="electronegativity">Electronegativity</option>
           <option value="mass">Atomic mass</option>
+          <option value="appearance">Element appearance</option>
         </select>
       </label>
-<<<<<<< HEAD
-=======
       <button id="lang-toggle" class="icon-btn lang-btn" type="button" aria-label="Switch language" title="العربية">عربي</button>
       <button id="orbitals-btn" class="ghost-btn" type="button">Electron tool</button>
+      <button id="molecules-btn" class="ghost-btn" type="button">Lewis molecules</button>
       <button id="acids-btn" class="ghost-btn" type="button">Acids</button>
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
       <button id="sound-toggle" class="icon-btn" title="Toggle sound" aria-pressed="true">🔊</button>
       <button id="help-btn" class="icon-btn" title="How to use">?</button>
     </div>
@@ -94,6 +91,7 @@
         <button id="add-water" class="reagent-btn" title="Splash with water">💧 Water</button>
         <button id="spark" class="reagent-btn" title="Strike a spark / flame">⚡ Spark</button>
       </div>
+      <p class="sound-note">Sound and visual effects are illustrative computer simulations, not recordings of real experiments.</p>
 
       <button id="mix-btn" class="mix-btn" disabled>Mix it! ⚗️</button>
 
@@ -107,23 +105,23 @@
   </main>
 
   <footer id="footer">
-<<<<<<< HEAD
-    <span>Element data from the public-domain <a href="https://github.com/RamziIahaq" target="_blank">
-  GitHub
-</a>" target="_blank">
-  GitHub
-</a>" target="_blank">
-  GitHub
-</a>" target="_blank" rel="noopener">Periodic-Table-JSON</a> · imagery via Wikimedia Commons.</span>
-=======
-    <span>Element data from the public-domain <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Periodic-Table-JSON</a> · imagery via Wikimedia Commons.</span>
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
+    <span>Element data from <a href="https://github.com/RamziIahaq" target="_blank" rel="noopener">Chemistry-Ramzi-Lab</a> · imagery via Wikimedia Commons.</span>
     <span class="footer-warn">Reactions use real standard thermodynamic data (ΔH, ΔS, ΔG @ 298 K) where available, with simplified kinetics — educational, not a substitute for real lab safety. Never mix chemicals for real without proper training.</span>
   </footer>
 </div>
 
-<<<<<<< HEAD
-=======
+<!-- Covalent molecule Lewis structure explorer -->
+<div id="molecules-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-molecules></div>
+  <section class="tool-card molecule-card" role="dialog" aria-modal="true" aria-labelledby="molecules-title">
+    <button class="modal-close" data-close-molecules aria-label="Close">✕</button>
+    <h2 id="molecules-title">Molecular Lewis structures</h2>
+    <p id="molecules-intro" class="tool-intro">Choose a known molecule to inspect its bonds and lone pairs. Structures are schematic 2D Lewis models.</p>
+    <label class="molecule-picker"><span id="molecule-picker-label">Molecule</span><select id="molecule-select"></select></label>
+    <div id="molecule-structure" class="molecule-structure" aria-live="polite"></div>
+  </section>
+</div>
+
 <!-- Orbital configuration calculator -->
 <div id="orbitals-modal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close-tool></div>
@@ -150,7 +148,6 @@
   </section>
 </div>
 
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 <!-- Element 3D explorer modal -->
 <div id="modal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close></div>
@@ -181,17 +178,17 @@
     <h2>⚗️ How to use the Chemistry Lab</h2>
     <ul class="help-list">
       <li><b>Hover</b> any element to see its details in the big card.</li>
-      <li><b>Click</b> an element to open the <b>hi-res 3D atom</b> explorer with live electron shells and annotations.</li>
+      <li><b>Click</b> an element to open the atom explorer. Choose <b>Visual form</b> to reveal the nucleus, shells, electron motion, and probability cloud step by step.</li>
       <li><b>Shift-click</b> (or ⌘/Ctrl-click) to <b>select multiple</b> elements — they glow.</li>
       <li><b>Drag</b> selected elements into the <b>cauldron</b>, or press <b>Mix it!</b></li>
       <li>Slide the <b>temperature</b> to heat or freeze the mix — some reactions only happen when hot.</li>
-      <li>Add <b>Air</b>, <b>Water</b> or a <b>Spark</b> to trigger combustion, rusting, explosions…</li>
+      <li>Add <b>Air</b>, <b>Water</b> or a <b>Spark</b>. The result explains whether a fast reaction is modeled, and why.</li>
       <li>Recolour the table by <b>state of matter</b> at your chosen temperature, electronegativity, or mass.</li>
-      <li>Every reaction shows real <b>thermodynamics</b> — ΔH, ΔS and ΔG with an energy diagram. Watch ΔG flip sign as you change the temperature!</li>
-      <li>Stuck? The <b>💡 Next</b> hint always suggests what to try — a spark, some water, more heat…</li>
+      <li>Available reactions can show standard-state <b>thermodynamics</b> — ΔH, ΔS and ΔG with an energy diagram. A ΔG sign does not tell you the reaction rate.</li>
+      <li>Explore the <b>molecular Lewis structures</b> tool to see clear bonds and lone pairs for common covalent molecules.</li><li>Stuck? The <b>💡 Next</b> hint suggests a useful next condition to try.</li>
       <li>Make a new compound and it joins your <b>Discoveries</b> list. How many can you find?</li>
     </ul>
-    <p class="help-foot">Tip: try Na + Cl, then 2 H + O with a spark, then drop K into Water. 💥</p>
+    <p class="help-foot">Tip: compare Na + Cl before and after a spark, then try K + Water. The lab distinguishes a possible hazard from a confirmed explosion.</p>
   </div>
 </div>
 
@@ -199,14 +196,11 @@
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <!-- Data + app -->
-<<<<<<< HEAD
-<script src="data/elements.js"></script>
-=======
 <script src="Data/elements.js"></script>
 <script src="Data/arabic.js"></script>
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
 <script src="js/reactions.js"></script>
 <script src="js/atom.js"></script>
+<script src="js/molecules.js"></script>
 <script src="js/app.js"></script>
 
 <script>
@@ -222,28 +216,6 @@
     }, 2000);
   });
 </script>
-<<<<<<< HEAD
-
-</body>
-</html>
-</script>
-</body>
-</html>
-</body>
-
-<div id="intro-screen">
-
-  <div class="intro-label">CHEMISTRY LABORATORY</div>
-
-  <h1 class="intro-name">RAMZI</h1>
-
-  <div class="intro-status">INITIALIZING CHEMICAL SYSTEMS...</div>
-
-  <div class="intro-loader"></div>
-
-</div>
-</html>
-=======
 <div id="intro-screen" aria-hidden="true">
   <div class="intro-label">CHEMISTRY LABORATORY</div>
   <h1 class="intro-name">RAMZI</h1>
@@ -252,4 +224,3 @@
 </div>
 </body>
 </html>
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)

@@ -1,11 +1,11 @@
 # ⚗️ Chemistry Lab
 **An interactive periodic table, hi-res 3D atom explorer, and a real-time chemistry mixing lab — for fun and learning.**
-![Chemistry Lab](https://chemistr-nexus.netlify.app)
+![Chemistry Lab](https://ramz-isahaq-chimstry.netlify.app/)
 =======
-🔗 **Live:** https://chemstry-ramzi.netlify.app
+🔗 **Live:** https://ramz-isahaq-chimstry.netlify.app/
 
-![Chemistry Lab](https://chemstry-ramzi.netlify.app)
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
+![Chemistry Lab](https://ramz-isahaq-chimstry.netlify.app/)
+>>>>>>> 383738c (https://ramz-isahaq-chimstry.netlify.app/)
 
 ---
 
@@ -65,7 +65,7 @@ js/app.js           table, hover, modal, lab, FX, sound
 Data/elements.js    generated element dataset (window.ELEMENTS)
 tools/build-data.js regenerates Data/elements.js from the raw source
 tools/serve.mjs      local static server for npm run serve
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
+>>>>>>> 383738c (https://ramz-isahaq-chimstry.netlify.app)
 ```
 
 Regenerate the dataset: `npm run build-data`. Serve locally: `npm run serve` (or any static server) and open http://localhost:8754.
@@ -73,7 +73,7 @@ Regenerate the dataset: `npm run build-data`. Serve locally: `npm run serve` (or
 ## Data & credits
 
 <<<<<<< HEAD
-Element data from the public-domain [Bowserinator / Periodic-Table-JSON](<a href="https://github.com/RamziIahaq" target="_blank">
+Element data from the public-domain [RamziIahaq](<a href="https://github.com/RamziIahaq" target="_blank">
   GitHub
 </a>); element photographs via Wikimedia Commons (CC BY 3.0, "Hi-Res Images of Chemical Elements").
 =======
@@ -90,4 +90,4 @@ The thermodynamics (ΔH, ΔS, ΔG, crossover temperatures) uses **real standard-
 Ramzi 
 =======
 Ramzi 
->>>>>>> 383738c (https://chemstry-ramzi.netlify.app)
+>>>>>>> 383738c (https://ramz-isahaq-chimstry.netlify.app)
